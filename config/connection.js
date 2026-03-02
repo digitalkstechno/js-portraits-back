@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import createAdmin from "../seeder/adminSeeder";
+import createAdmin from "../seeder/adminSeeder.js";
 
 export const connectDB = async () => {
   try {
