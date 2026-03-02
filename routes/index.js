@@ -1,12 +1,12 @@
 import express from "express";
 const router = express.Router();
 
-import userRoutes from "./user.js";
-import permissionRoutes from "./permission.js";
+import authRoute from "./auth.js";
+import staffRoutes from "./staff.js";
 import roleRoutes from "./role.js";
 
-router.use("/users", userRoutes);
-router.use("/permission", permissionRoutes);
+router.use("/admin", authRoute);
+router.use("/staff", staffRoutes);
 router.use("/role", roleRoutes);
 
 export default router;
