@@ -7,12 +7,7 @@ import {
 
 export const createRoleHandler = async (req, res) => {
   try {
-    const data = req.body;
-    const companyId = req.user.companyId; // 🔥 FROM JWT
-    const role = await createRole({
-      ...data,
-      companyId,
-    });
+    const role = await createRole(req.body);
 
     return res.status(201).json({
       message: "Role created successfully",

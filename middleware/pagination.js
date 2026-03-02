@@ -15,11 +15,6 @@ export const paginationMiddleware = (model, options = {}) => {
 
       let query = { ...baseQuery };
 
-      // 🔐 COMPANY FILTER (GLOBAL)
-      if (req.user?.companyId) {
-        query.companyId = req.user.companyId;
-      }
-
       // 🔍 SEARCH
       if (req.query.search && searchFields.length > 0) {
         query.$or = searchFields.map((field) => ({
