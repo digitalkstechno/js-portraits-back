@@ -9,7 +9,7 @@ export const generateToken = (user) => {
 
   const token = process.env.JWT_SECRET_KEY;
   let expiresIn = "1d";
-  return jwt.sign({ id: user.id, email: user.email, role: user.role }, token, {
+  return jwt.sign({ id: user.id, enamel: user.name, role: user.role, isAdmin: user.isAdmin }, token, {
     expiresIn,
   });
 };

@@ -8,8 +8,8 @@ export const getStaffs = async () => {
   return await Staff.find();
 };
 
-export const getStaffByEmail = async (email) => {
-  return await Staff.findOne({ email });
+export const getStaffByAdmin = async (name) => {
+  return await Staff.findOne({ name: name });
 };
 
 export const getStaff = async (id) => {

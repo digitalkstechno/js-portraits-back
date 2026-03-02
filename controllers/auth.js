@@ -1,33 +1,37 @@
+import { getStaffByAdmin } from "../services/staff.js";
+import { generateToken } from "../utils/jwt.js";
+import bcrypt from "bcryptjs";
+
 export const loginAdminHandler = async (req, res) => {
   try {
-    const { email, password } = req.body;
-    if (!email || !password) {
+    const { name, password } = req.body;
+    if (!name || !password) {
       return res
         .status(400)
-        .json({ message: "Email and password are required" });
+        .json({ message: "User name and password are required" });
     }
 
-    const user = await getUserByEmail(email);
-    if (!user) {
+    const admin = await getStaffByAdmin(name);
+    if (!admin) {
       return res
         .status(404)
-        .json({ message: "User not found with this email" });
+        .json({ message: "Admin not found with this user name" });
     }
 
-    const match = await bcrypt.compare(password, user.password);
+    const match = await bcrypt.compare(password, admin.password);
     if (!match) {
       return res.status(400).json({ message: "Invalid credentials" });
     }
 
-    const token = generateToken(user);
+    const token = generateToken(admin);
 
     return res.status(200).json({
       success: true,
-      message: "User logged in successfully",
-      id: user._id,
-      email: user.email,
-      password: user.password,
-      role: user.role,
+      message: "Admin logged in successfully",
+      id: admin._id,
+      email: admin.email,
+      password: admin.password,
+      isAdmin: admin.isAdmin,
       token: token,
     });
   } catch (error) {
