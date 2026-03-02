@@ -9,7 +9,7 @@ import {
 const router = express.Router();
 
 router.get("/", getStaffHandler);
-router.post("/create-user", createStaffHandler);
+router.post("/", createStaffHandler);
 router.get("/:id", getStaffByIdHandler);
 router.put("/:id", updateStaffHandler);
 router.delete("/:id", deleteStaffHandler);
