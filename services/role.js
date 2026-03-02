@@ -1,23 +1,23 @@
-import role from "../models/role.js";
+import Role from "../models/role.js";
 
 export const createRole = async (data) => {
-  return await role.create(data);
+  return await Role.create(data);
 };
 
 export const getRoles = async () => {
-  return await role.find();
+  return await Role.find();
 };
 
 export const getRoleById = async (id) => {
-  return await role.findById(id);
+  return await Role.findById(id);
 };
 
 export const updateRole = async (id, data) => {
-  return await role.findByIdAndUpdate(id, data, {
+  return await Role.findByIdAndUpdate(id, data, {
     new: true,
   });
 };
 
 export const deleteRole = async (id) => {
-  return await role.findByIdAndDelete(id);
+  return await Role.findByIdAndDelete(id);
 };

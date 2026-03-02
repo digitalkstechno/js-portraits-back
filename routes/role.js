@@ -1,4 +1,6 @@
 import express from "express";
+import { paginationMiddleware } from "../middleware/pagination.js";
+import Role from "../models/role.js";
 import {
   createRoleHandler,
   deleteRoleHandler,
@@ -6,8 +8,6 @@ import {
   getRolesHandler,
   updateRoleHandler,
 } from "../controllers/role.js";
-import { paginationMiddleware } from "../middleware/pagination.js";
-import Role from "../models/role.js";
 const router = express.Router();
 
 router.get(
