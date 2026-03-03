@@ -10,7 +10,13 @@ import {
 } from "../controllers/products.js";
 const router = express.Router();
 
-router.get("/", paginationMiddleware(ProductDetails), getProductsHandler);
+router.get(
+  "/",
+  paginationMiddleware(ProductDetails, {
+    populate: { path: "item_name" },
+  }),
+  getProductsHandler,
+);
 router.post("/", createProductHandler);
 router.get("/:id", getProductByIdHandler);
 router.put("/:id", updateProductHandler);
