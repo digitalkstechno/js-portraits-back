@@ -9,6 +9,6 @@ import itemRoutes from "./itemMaster.js";
 router.use("/admin", authRoute);
 router.use("/staff", staffRoutes);
 router.use("/role", roleRoutes);
-router.use("items", itemRoutes);
+router.use("/items", itemRoutes);
 
 export default router;

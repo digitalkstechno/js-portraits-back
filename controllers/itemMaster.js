@@ -8,11 +8,11 @@ import {
 
 export const createItemHandler = async (req, res) => {
   try {
-    const role = await createItems(req.body);
+    const items = await createItems(req.body);
 
     return res.status(201).json({
       message: "Item created successfully",
-      role,
+      items,
     });
   } catch (error) {
     return res.status(500).json({
