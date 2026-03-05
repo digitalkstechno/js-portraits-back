@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get("/:id", getStaffsHistory);
 router.post("/", createPayment);
-router.get("/stats/:id", getStaffSalaryStats);
+router.get("/stats/:staffId", getStaffSalaryStats);
 router.delete("/:id", removePayment);
 
 export default router;

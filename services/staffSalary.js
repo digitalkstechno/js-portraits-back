@@ -11,30 +11,25 @@ export const getStaffHistory = async (staffId) => {
 };
 
 // Summary Logic: Particular mahine ka total salary aur exposure nikalne ke liye
-export const getStaffStats = async (staffId, month = null, year = null) => {
-  const matchQuery = {
-    staffId: new mongoose.Types.ObjectId(staffId),
-  };
-
-  // Agar month aur year pass kiya hai, tabhi date filter lagao
-  if (month && year) {
-    const startDate = new Date(year, month - 1, 1);
-    const endDate = new Date(year, month, 0, 23, 59, 59); // Month ka last second
-    matchQuery.date = { $gte: startDate, $lte: endDate };
-  }
-
+export const getStaffStats = async (staffId) => {
+  // 1. Convert to ObjectId safely
+  const sId = new mongoose.Types.ObjectId(staffId);
   const stats = await StaffSalary.aggregate([
-    { $match: matchQuery },
+    {
+      $match: { staffId: sId }, // Exact match with ObjectId
+    },
     {
       $group: {
-        _id: "$type", // "Salary" ya "Exposure" ke basis par group karega
+        _id: "$type",
         totalAmount: { $sum: "$amount" },
       },
     },
   ]);
 
-  // Response ko clean object mein convert karna
+  // Default structure
   const result = { Salary: 0, Exposure: 0 };
+
+  // 2. Loop through result to map values
   stats.forEach((item) => {
     if (item._id === "Salary") result.Salary = item.totalAmount;
     if (item._id === "Exposure") result.Exposure = item.totalAmount;

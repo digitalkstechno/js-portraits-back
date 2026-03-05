@@ -1,3 +1,4 @@
+import StaffSalary from "../models/staffSalary.js";
 import {
   deleteRecord,
   getStaffHistory,
@@ -31,6 +32,9 @@ export const getStaffSalaryStats = async (req, res) => {
     const { staffId } = req.params;
     const { month, year } = req.query; // Ye ab optional hain
 
+    const count = await StaffSalary.countDocuments({
+      staffId: req.params.staffId,
+    });
     // Agar month/year nahi hai toh null pass hoga
     const stats = await getStaffStats(
       staffId,
@@ -40,6 +44,7 @@ export const getStaffSalaryStats = async (req, res) => {
 
     res.status(200).json({
       success: true,
+      recordsFound: count,
       period: month && year ? `${month}/${year}` : "Lifetime",
       stats: stats,
     });
