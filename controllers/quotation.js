@@ -11,12 +11,16 @@ export const createQuotationHandler = async (req, res) => {
     const quotation = await createQuotation(req.body);
 
     return res.status(201).json({
+      success: true,
       message: "Quotation created successfully",
-      quotation,
+      data: quotation,
     });
   } catch (error) {
+    console.error("Quotation Create Error:", error);
+
     return res.status(500).json({
-      message: "Error creating quotaion",
+      success: false,
+      message: "Error creating quotation",
       error: error.message,
     });
   }

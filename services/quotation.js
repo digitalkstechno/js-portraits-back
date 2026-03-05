@@ -4,7 +4,7 @@ export const createQuotation = async (data) => {
   // 1. Auto-generate Quotation Number (Example: QT-2026-001)
   const count = await Quotation.countDocuments();
   const date = new Date();
-  const quotationNo = `QT-${date.getFullYear()}-${(count + 1).toString().padStart(3, "0")}`;
+  const quotationNo = `${(count + 1).toString()}`;
 
   // 2. Calculate Totals (Double check from backend side for security)
   const items = data.items.map((item) => ({

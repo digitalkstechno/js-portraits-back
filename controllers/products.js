@@ -42,7 +42,7 @@ export const getProductByIdHandler = async (req, res) => {
   }
 };
 
-export const getProductsByItem = async (id) => {
+export const getProductsByItem = async (req, res) => {
   const { itemId } = req.params;
 
   const products = await getProductsByItems(itemId);
