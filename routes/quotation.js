@@ -18,9 +18,9 @@ router.get(
   }),
   getQuotationsHandler,
 );
+router.get("/:quotationNo", getQuotationByQuotationHandler);
 router.post("/", createQuotationHandler);
 router.get("/:id", getQuotationByIdHandler);
-router.get("/:quotationNo", getQuotationByQuotationHandler);
 router.put("/:id", updateQuotationHandler);
 router.delete("/:id", deleteQuotationHandler);
 

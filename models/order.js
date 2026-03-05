@@ -52,7 +52,7 @@ const orderSchema = new mongoose.Schema(
       type: Date,
     },
 
-    mobNo: {
+    contactNo: {
       type: String,
     },
 
@@ -60,7 +60,7 @@ const orderSchema = new mongoose.Schema(
       type: String,
     },
 
-    custName: {
+    outdoorParty: {
       type: String,
     },
 
@@ -72,7 +72,7 @@ const orderSchema = new mongoose.Schema(
       type: String,
     },
 
-    remark: {
+    remarks: {
       type: String,
     },
 

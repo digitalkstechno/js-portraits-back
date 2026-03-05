@@ -5,7 +5,7 @@ const quotationItemSchema = new mongoose.Schema(
     date: { type: Date },
     productId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
+      ref: "ProductDetails",
       required: true,
     },
     itemName: {

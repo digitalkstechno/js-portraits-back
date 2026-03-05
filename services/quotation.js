@@ -35,7 +35,9 @@ export const getQuotationById = async (id) => {
 };
 
 export const getQuotationByQuotationNo = async (quotationNo) => {
-  return await Quotation.findOne({ quotationNo });
+  return await Quotation.findOne({ quotationNo: quotationNo }).populate(
+    "items.productId",
+  );
 };
 
 export const updateQuotation = async (id, updateData) => {
