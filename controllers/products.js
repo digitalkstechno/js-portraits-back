@@ -48,7 +48,7 @@ export const updateProductHandler = async (req, res) => {
     if (product) {
       return res
         .status(200)
-        .json({ message: "Product updated successfully", role });
+        .json({ message: "Product updated successfully", product });
     } else {
       return res.status(404).json({ message: "Product not found" });
     }
