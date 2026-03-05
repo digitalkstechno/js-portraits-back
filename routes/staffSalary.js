@@ -7,7 +7,7 @@ import {
 } from "../controllers/staffSalary.js";
 const router = express.Router();
 
-router.get("/:id", getStaffsHistory);
+router.get("/:staffId", getStaffsHistory);
 router.post("/", createPayment);
 router.get("/stats/:staffId", getStaffSalaryStats);
 router.delete("/:id", removePayment);
