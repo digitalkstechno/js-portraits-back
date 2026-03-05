@@ -9,9 +9,11 @@ import productRoutes from "./products.js";
 import quotationRoutes from "./quotation.js";
 import outdoorOrderRoutes from "./order.js";
 import outdoorbill from "./outdoorbill.js";
+import staffSalaryRoutes from "./staffSalary.js";
 
 router.use("/admin", authRoute);
 router.use("/staff", staffRoutes);
+router.use("/staffSalary", staffSalaryRoutes);
 router.use("/role", roleRoutes);
 router.use("/items", itemRoutes);
 router.use("/products", productRoutes);
