@@ -28,10 +28,12 @@ export const loginAdminHandler = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "Admin logged in successfully",
-      id: admin._id,
-      email: admin.email,
-      password: admin.password,
-      isAdmin: admin.isAdmin,
+      user: {
+        _id: admin._id,
+        name: admin.name,
+        company_name: admin.company_name,
+        isAdmin: admin.isAdmin,
+      },
       token: token,
     });
   } catch (error) {
