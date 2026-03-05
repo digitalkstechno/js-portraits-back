@@ -8,6 +8,7 @@ import itemRoutes from "./itemMaster.js";
 import productRoutes from "./products.js";
 import quotationRoutes from "./quotation.js";
 import outdoorOrderRoutes from "./order.js";
+import outdoorbill from "./outdoorbill.js";
 
 router.use("/admin", authRoute);
 router.use("/staff", staffRoutes);
@@ -16,5 +17,6 @@ router.use("/items", itemRoutes);
 router.use("/products", productRoutes);
 router.use("/quotation", quotationRoutes);
 router.use("/order", outdoorOrderRoutes);
+router.use("/outdoorbill", outdoorbill);
 
 export default router;
