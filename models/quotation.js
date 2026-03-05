@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const quotationItemSchema = new mongoose.Schema(
   {
+    date: { type: Date },
     productId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Product",
@@ -70,7 +71,7 @@ const quotationSchema = new mongoose.Schema(
     package: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Package",
-      default: null
+      default: null,
     },
 
     functionDate: {

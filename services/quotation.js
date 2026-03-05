@@ -34,6 +34,10 @@ export const getQuotationById = async (id) => {
   return await Quotation.findById(id);
 };
 
+export const getQuotationByQuotationNo = async (quotationNo) => {
+  return await Quotation.findOne({ quotationNo });
+};
+
 export const updateQuotation = async (id, updateData) => {
   // Recalculate if items or discount changed
   if (updateData.items || updateData.discount !== undefined) {

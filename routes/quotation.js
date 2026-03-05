@@ -5,6 +5,7 @@ import {
   createQuotationHandler,
   deleteQuotationHandler,
   getQuotationByIdHandler,
+  getQuotationByQuotationHandler,
   getQuotationsHandler,
   updateQuotationHandler,
 } from "../controllers/quotation.js";
@@ -19,6 +20,7 @@ router.get(
 );
 router.post("/", createQuotationHandler);
 router.get("/:id", getQuotationByIdHandler);
+router.get("/:quotationNo", getQuotationByQuotationHandler);
 router.put("/:id", updateQuotationHandler);
 router.delete("/:id", deleteQuotationHandler);
 

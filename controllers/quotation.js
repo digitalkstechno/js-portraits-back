@@ -3,6 +3,7 @@ import {
   deleteQuotation,
   getAllQuotations,
   getQuotationById,
+  getQuotationByQuotationNo,
   updateQuotation,
 } from "../services/quotation.js";
 
@@ -42,6 +43,27 @@ export const getQuotationByIdHandler = async (req, res) => {
     return res.status(200).json(quotation);
   } catch (error) {
     return res.status(500).json({ message: "Quotation not found" });
+  }
+};
+
+export const getQuotationByQuotationHandler = async (req, res) => {
+  try {
+    const { quotationNo } = req.params;
+
+    const quotation = await getQuotationByQuotationNo(quotationNo);
+
+    if (!quotation) {
+      return res.status(404).json({
+        message: "Quotation not found",
+      });
+    }
+
+    return res.status(200).json(quotation);
+  } catch (error) {
+    return res.status(500).json({
+      message: "Error fetching quotation",
+      error: error.message,
+    });
   }
 };
 
