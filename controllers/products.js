@@ -3,6 +3,7 @@ import {
   deleteProduct,
   getProductById,
   getProducts,
+  getProductsByItems,
   updateProduct,
 } from "../services/productDetails.js";
 
@@ -39,6 +40,14 @@ export const getProductByIdHandler = async (req, res) => {
   } catch (error) {
     return res.status(500).json({ message: "Product not found" });
   }
+};
+
+export const getProductsByItem = async (id) => {
+  const { itemId } = req.params;
+
+  const products = await getProductsByItems(itemId);
+
+  res.status(200).json(products);
 };
 
 export const updateProductHandler = async (req, res) => {

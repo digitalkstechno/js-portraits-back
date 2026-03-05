@@ -12,6 +12,14 @@ export const getProductById = async (id) => {
   return await ProductDetails.findById(id);
 };
 
+export const getProductsByItems = async (itemId) => {
+  const products = await ProductDetails.find({
+    item_name: itemId,
+  });
+
+  return products;
+};
+
 export const updateProduct = async (id, data) => {
   return await ProductDetails.findByIdAndUpdate(id, data, {
     new: true,
