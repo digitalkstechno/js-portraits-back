@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const orderBillItemSchema = new mongoose.Schema(
   {
     date: { type: Date },
-    productId: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
+    productId: { type: mongoose.Schema.Types.ObjectId, ref: "ProductDetails" },
     itemName: { type: String, required: true },
     eventName: { type: String },
     qty: { type: Number, required: true, min: 1 },
@@ -17,7 +17,7 @@ const orderBillItemSchema = new mongoose.Schema(
 
 const orderBillSchema = new mongoose.Schema(
   {
-    orderNo: { type: String, unique: true },
+    billNo: { type: String, unique: true },
     date: { type: Date, default: Date.now },
     contactNo: { type: String },
     quotationNo: { type: String },

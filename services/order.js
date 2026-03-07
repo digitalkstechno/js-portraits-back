@@ -33,5 +33,7 @@ export const createOutdoorOrder = async (data) => {
 };
 
 export const getOrderByQuotationNo = async (quotationNo) => {
-  return await OutdoorOrder.findOne({ quotationNo });
+  return await OutdoorOrder.findOne({ quotationNo }).populate(
+    "items.productId",
+  );
 };

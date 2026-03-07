@@ -3,7 +3,7 @@ import OutdoorOrderBill from "../models/outerbill.js";
 export const createOrderBill = async (data) => {
   // 1. Auto-generate Order Number
   const count = await OutdoorOrderBill.countDocuments();
-  const orderNo = `ORD-${new Date().getFullYear()}-${(count + 1).toString().padStart(4, "0")}`;
+  const billNo = `${(count + 1).toString()}`;
 
   // 2. Calculate Subtotal from items
   const subTotal = data.items.reduce(
@@ -23,7 +23,7 @@ export const createOrderBill = async (data) => {
 
   const newBill = new OutdoorOrderBill({
     ...data,
-    orderNo,
+    billNo,
     subTotal,
     grandTotal,
     balance,

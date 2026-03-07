@@ -6,7 +6,7 @@ const orderItemSchema = new mongoose.Schema(
 
     productId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
+      ref: "ProductDetails",
     },
 
     itemName: {
