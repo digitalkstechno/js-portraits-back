@@ -3,11 +3,13 @@ import {
   createStaffHandler,
   deleteStaffHandler,
   getStaffByIdHandler,
+  getStaffCount,
   getStaffHandler,
   updateStaffHandler,
 } from "../controllers/staff.js";
 const router = express.Router();
 
+router.get("/count", getStaffCount);
 router.get("/", getStaffHandler);
 router.post("/", createStaffHandler);
 router.get("/:id", getStaffByIdHandler);

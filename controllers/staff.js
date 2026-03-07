@@ -1,6 +1,7 @@
 import {
   createStaff,
   deleteStaff,
+  getCountOfStaff,
   getStaff,
   getStaffs,
   updateStaff,
@@ -38,6 +39,15 @@ export const getStaffByIdHandler = async (req, res) => {
     return res.status(200).json(user);
   } catch (error) {
     return res.status(500).json({ message: "Staff not found" });
+  }
+};
+
+export const getStaffCount = async (req, res) => {
+  try {
+    const count = await getCountOfStaff();
+    res.status(200).json({ success: true, count });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
