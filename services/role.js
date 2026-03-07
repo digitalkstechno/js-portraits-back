@@ -12,6 +12,10 @@ export const getRoleById = async (id) => {
   return await Role.findById(id);
 };
 
+export const getRoleByName = async (name) => {
+  return await Role.findOne({ name });
+};
+
 export const updateRole = async (id, data) => {
   return await Role.findByIdAndUpdate(id, data, {
     new: true,

@@ -2,11 +2,20 @@ import {
   createRole,
   deleteRole,
   getRoleById,
+  getRoleByName,
   updateRole,
 } from "../services/role.js";
 
 export const createRoleHandler = async (req, res) => {
   try {
+    const { name } = req.body;
+    const exist = await getRoleByName(name);
+    if (exist) {
+      return res
+        .status(404)
+        .json({ message: "Role already exist with this name" });
+    }
+
     const role = await createRole(req.body);
 
     return res.status(201).json({

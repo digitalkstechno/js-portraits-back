@@ -1,3 +1,4 @@
+import { createRole, getRoleByName } from "../services/role.js";
 import {
   createStaff,
   deleteStaff,
@@ -9,7 +10,17 @@ import {
 
 export const createStaffHandler = async (req, res) => {
   try {
+    const { role } = req.body;
     const user = await createStaff(req.body);
+    if (!user) {
+      return res.status(404).json({ message: "Failed to create staff" });
+    }
+
+    const exist = await getRoleByName(role);
+
+    if (!exist) {
+      await createRole({ name: role });
+    }
 
     return res.status(201).json({
       message: "Staff created successfully",

@@ -6,7 +6,7 @@ const staffSchema = new mongoose.Schema(
     staffId: { type: String },
     name: { type: String, required: true },
     email: { type: String },
-    role: { type: mongoose.Schema.Types.ObjectId, ref: "Role" },
+    role: { type: String },
     isAdmin: { type: Boolean, default: false },
     password: { type: String },
     contact_no: { type: String },
