@@ -10,6 +10,10 @@ export const getStaffHistory = async (staffId) => {
   return await StaffSalary.find({ staffId }).sort({ date: -1 });
 };
 
+export const getStaffSalary = async (staffId) => {
+  return await StaffSalary.find().sort({ date: -1 });
+};
+
 // Summary Logic: Particular mahine ka total salary aur exposure nikalne ke liye
 export const getStaffStats = async (staffId) => {
   // 1. Convert to ObjectId safely

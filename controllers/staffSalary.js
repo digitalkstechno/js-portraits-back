@@ -2,6 +2,7 @@ import StaffSalary from "../models/staffSalary.js";
 import {
   deleteRecord,
   getStaffHistory,
+  getStaffSalary,
   getStaffStats,
   recordPayment,
 } from "../services/staffSalary.js";
@@ -16,6 +17,16 @@ export const createPayment = async (req, res) => {
     res.status(400).json({ success: false, message: error.message });
   }
 };
+
+export const getStaffsSalaries = async (req, res) => {
+  try {
+    const salary = await getStaffSalary();
+    res.status(200).json({ success: true, salary });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
 
 export const getStaffsHistory = async (req, res) => {
   try {
