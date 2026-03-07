@@ -2,6 +2,7 @@ import {
   createQuotation,
   deleteQuotation,
   getAllQuotations,
+  getCountOfQuotation,
   getQuotationById,
   getQuotationByQuotationNo,
   updateQuotation,
@@ -64,6 +65,15 @@ export const getQuotationByQuotationHandler = async (req, res) => {
       message: "Error fetching quotation",
       error: error.message,
     });
+  }
+};
+
+export const getQuotationCount = async (req, res) => {
+  try {
+    const count = await getCountOfQuotation();
+    res.status(200).json({ success: true, count });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 

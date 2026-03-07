@@ -6,11 +6,13 @@ import {
   deleteQuotationHandler,
   getQuotationByIdHandler,
   getQuotationByQuotationHandler,
+  getQuotationCount,
   getQuotationsHandler,
   updateQuotationHandler,
 } from "../controllers/quotation.js";
 const router = express.Router();
 
+router.get("/count", getQuotationCount);
 router.get(
   "/",
   paginationMiddleware(Quotation, {

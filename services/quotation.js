@@ -40,6 +40,11 @@ export const getQuotationByQuotationNo = async (quotationNo) => {
   );
 };
 
+export const getCountOfQuotation = async () => {
+  const count = await Quotation.countDocuments();
+  return count;
+};
+
 export const updateQuotation = async (id, updateData) => {
   // Recalculate if items or discount changed
   if (updateData.items || updateData.discount !== undefined) {
