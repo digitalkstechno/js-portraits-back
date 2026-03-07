@@ -41,6 +41,11 @@ export const getBillById = async (id) => {
   return await OutdoorOrderBill.findById(id).populate("items.productId");
 };
 
+export const getCountOfBills = async () => {
+  const count = await OutdoorOrderBill.countDocuments();
+  return count;
+};
+
 export const updateBillById = async (id) => {
   return await OutdoorOrderBill.findByIdAndUpdate(req.params.id, req.body, {
     new: true,

@@ -2,6 +2,7 @@ import {
   createOrderBill,
   getAllBills,
   getBillById,
+  getCountOfBills,
   updateBillById,
 } from "../services/outdoorbill.js";
 
@@ -31,6 +32,15 @@ export const fetchSingleBill = async (req, res) => {
         .status(404)
         .json({ success: false, message: "Bill not found" });
     res.status(200).json({ success: true, bill });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const fetchOutdoorBillsCount = async (req, res) => {
+  try {
+    const count = await getCountOfBills();
+    res.status(200).json({ success: true, count });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
