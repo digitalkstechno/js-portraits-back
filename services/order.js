@@ -37,3 +37,8 @@ export const getOrderByQuotationNo = async (quotationNo) => {
     "items.productId",
   );
 };
+
+export const getCountOfOrders = async () => {
+  const count = await OutdoorOrder.countDocuments();
+  return count;
+};

@@ -1,5 +1,6 @@
 import {
   createOutdoorOrder,
+  getCountOfOrders,
   getOrderByQuotationNo,
 } from "../services/order.js";
 
@@ -37,5 +38,14 @@ export const getOrderByQuotationHandler = async (req, res) => {
       message: "Error fetching order",
       error: error.message,
     });
+  }
+};
+
+export const getOrdersCount = async (req, res) => {
+  try {
+    const count = await getCountOfOrders();
+    res.status(200).json({ success: true, count });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
   }
 };
