@@ -13,6 +13,7 @@ import staffSalaryRoutes from "./staffSalary.js";
 import noteSettingsRoutes from "./noteSettings.js";
 import outdoorBookMasterRoutes from "./outdoorBookMaster.js";
 import customerRoutes from "./customer.js";
+import termsConditionsRoutes from "./terms&conditions.js";
 
 router.use("/admin", authRoute);
 router.use("/staff", staffRoutes);
@@ -26,5 +27,6 @@ router.use("/outdoorbill", outdoorbill);
 router.use("/noteSettings", noteSettingsRoutes);
 router.use("/outdoorBookMaster", outdoorBookMasterRoutes);
 router.use("/outdoorParty", customerRoutes);
+router.use("/termsAndConditions", termsConditionsRoutes);
 
 export default router;
