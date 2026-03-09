@@ -1,7 +1,10 @@
 import ProductDetails from "../models/products.js";
 
 export const createProduct = async (data) => {
-  return await ProductDetails.create(data);
+  const count = await ProductDetails.countDocuments();
+  const sr_no = `${(count + 1).toString()}`;
+  const product = new ProductDetails({ ...data, sr_no });
+  return product;
 };
 
 export const getProducts = async () => {
@@ -18,6 +21,11 @@ export const getProductsByItems = async (itemId) => {
   });
 
   return products;
+};
+
+export const getCountOfProducts = async () => {
+  const count = await ProductDetails.countDocuments();
+  return count;
 };
 
 export const updateProduct = async (id, data) => {

@@ -1,6 +1,7 @@
 import {
   createProduct,
   deleteProduct,
+  getCountOfProducts,
   getProductById,
   getProducts,
   getProductsByItems,
@@ -49,6 +50,16 @@ export const getProductsByItem = async (req, res) => {
 
   res.status(200).json(products);
 };
+
+export const getProductsCount = async (req, res) => {
+  try {
+    const count = await getCountOfProducts();
+    res.status(200).json({ success: true, count });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
 
 export const updateProductHandler = async (req, res) => {
   try {

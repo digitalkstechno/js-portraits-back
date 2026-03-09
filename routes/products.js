@@ -6,11 +6,13 @@ import {
   deleteProductHandler,
   getProductByIdHandler,
   getProductsByItem,
+  getProductsCount,
   getProductsHandler,
   updateProductHandler,
 } from "../controllers/products.js";
 const router = express.Router();
 
+router.get("/count", getProductsCount);
 router.get(
   "/",
   paginationMiddleware(ProductDetails, {
