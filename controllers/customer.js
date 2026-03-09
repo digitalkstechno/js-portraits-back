@@ -15,11 +15,11 @@ export const createCustomerHandler = async (req, res) => {
         .json({ message: "Outdoor party already exist with this name" });
     }
 
-    const role = await createCustomer(req.body);
+    const customer = await createCustomer(req.body);
 
     return res.status(201).json({
       message: "Outdoor party created successfully",
-      role,
+      customer,
     });
   } catch (error) {
     return res.status(500).json({
@@ -31,8 +31,8 @@ export const createCustomerHandler = async (req, res) => {
 
 export const getCustomerHandler = async (req, res) => {
   try {
-    const roles = await getCustomers();
-    return res.status(200).json();
+    const customers = await getCustomers();
+    return res.status(200).json(customers);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -41,13 +41,13 @@ export const getCustomerHandler = async (req, res) => {
 export const updateCustomerHandler = async (req, res) => {
   try {
     const id = req.params.id;
-    const role = await updateCustomer(id, req.body);
-    if (role) {
+    const customer = await updateCustomer(id, req.body);
+    if (customer) {
       return res
         .status(200)
-        .json({ message: "Customer updated successfully", role });
+        .json({ message: "Customer updated successfully", customer });
     } else {
-      return res.status(404).json({ message: "Customer" });
+      return res.status(404).json({ message: "Customer not found" });
     }
   } catch (error) {
     return res.status(500).json({ message: "Customer not found" });
