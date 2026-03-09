@@ -10,6 +10,7 @@ import quotationRoutes from "./quotation.js";
 import outdoorOrderRoutes from "./order.js";
 import outdoorbill from "./outdoorbill.js";
 import staffSalaryRoutes from "./staffSalary.js";
+import noteSettingsRoutes from "./noteSettings.js";
 
 router.use("/admin", authRoute);
 router.use("/staff", staffRoutes);
@@ -20,5 +21,6 @@ router.use("/products", productRoutes);
 router.use("/quotation", quotationRoutes);
 router.use("/order", outdoorOrderRoutes);
 router.use("/outdoorbill", outdoorbill);
+router.use("/noteSettings", noteSettingsRoutes);
 
 export default router;
