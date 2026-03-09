@@ -6,11 +6,11 @@ export const getNotes = async () => {
 };
 
 export const updateNotes = async (data) => {
-  // data ek object hona chahiye { quotationNote, orderNote, billNote, updateBy }
   // {} filter matlab collection ka pehla document uthao
   // upsert: true matlab agar nahi hai toh bana do, hai toh update karo
-  return await NoteSettings.findOneAndUpdate({}, data, {
-    new: true,
-    upsert: true,
-  });
+  return await NoteSettings.findOneAndUpdate(
+    {},
+    data,
+    { returnDocument: "after", upsert: true }, // ✅ Modern way
+  );
 };
