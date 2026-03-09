@@ -36,9 +36,24 @@ export const createStaffHandler = async (req, res) => {
 
 export const getStaffHandler = async (req, res) => {
   try {
-    const users = await getStaffs();
-    return res.status(200).json(users);
+    // 1. Query se values nikaalein aur default set karein
+    const name = req.query.name || "";
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+
+    // 2. Service ko call karein
+    const result = await getStaffs(name, page, limit);
+
+    // 3. Response bhejien (Aapka Angular isi format ko expect kar raha hai)
+    return res.status(200).json({
+      success: true,
+      total: result.total,
+      data: result.data,
+      page,
+      limit,
+    });
   } catch (error) {
+    console.error("Error in getStaffHandler:", error);
     return res.status(500).json({ message: error.message });
   }
 };

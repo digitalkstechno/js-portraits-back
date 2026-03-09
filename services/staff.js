@@ -4,8 +4,24 @@ export const createStaff = async (data) => {
   return await Staff.create(data);
 };
 
-export const getStaffs = async () => {
-  return await Staff.find();
+export const getStaffs = async (searchName, page, limit) => {
+  const skip = (page - 1) * limit;
+
+  // Query object: Hamesha non-admin staff hi dikhayein
+  let query = { isAdmin: false };
+
+  // Agar search term hai toh name par regex lagayein
+  if (searchName) {
+    query.name = { $regex: searchName, $options: "i" };
+  }
+
+  // Parallel execution: Data aur Count dono ek saath fetch karein
+  const [data, total] = await Promise.all([
+    Staff.find(query).sort({ createdAt: -1 }).limit(limit).skip(skip),
+    Staff.countDocuments(query),
+  ]);
+
+  return { data, total };
 };
 
 export const getStaffByAdmin = async (name) => {
