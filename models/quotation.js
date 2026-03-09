@@ -69,9 +69,7 @@ const quotationSchema = new mongoose.Schema(
     },
 
     package: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Package",
-      default: null,
+     type: String
     },
 
     functionDate: {
