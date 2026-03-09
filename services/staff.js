@@ -17,7 +17,7 @@ export const getStaffs = async (searchName, page, limit) => {
 
   // Parallel execution: Data aur Count dono ek saath fetch karein
   const [data, total] = await Promise.all([
-    Staff.find(query).sort({ createdAt: -1 }).limit(limit).skip(skip),
+    Staff.find(query).sort({ createdAt: 1 }).limit(limit).skip(skip),
     Staff.countDocuments(query),
   ]);
 
