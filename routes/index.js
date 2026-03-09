@@ -12,6 +12,7 @@ import outdoorbill from "./outdoorbill.js";
 import staffSalaryRoutes from "./staffSalary.js";
 import noteSettingsRoutes from "./noteSettings.js";
 import outdoorBookMasterRoutes from "./outdoorBookMaster.js";
+import customerRoutes from "./customer.js";
 
 router.use("/admin", authRoute);
 router.use("/staff", staffRoutes);
@@ -24,5 +25,6 @@ router.use("/order", outdoorOrderRoutes);
 router.use("/outdoorbill", outdoorbill);
 router.use("/noteSettings", noteSettingsRoutes);
 router.use("/outdoorBookMaster", outdoorBookMasterRoutes);
+router.use("/outdoorParty", customerRoutes);
 
 export default router;

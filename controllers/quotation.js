@@ -1,3 +1,4 @@
+import { createCustomer, getCustomerByName } from "../services/customer.js";
 import {
   createQuotation,
   deleteQuotation,
@@ -10,7 +11,16 @@ import {
 
 export const createQuotationHandler = async (req, res) => {
   try {
+    const { outdoorParty, contactNo } = req.body;
     const quotation = await createQuotation(req.body);
+    if (!quotation) {
+      return res.status(404).json({ message: "Failed to create quotation" });
+    }
+
+    const exist = await getCustomerByName(outdoorParty);
+    if (!exist) {
+      await createCustomer({ name: outdoorParty, contact: contactNo });
+    }
 
     return res.status(201).json({
       success: true,
