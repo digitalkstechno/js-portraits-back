@@ -69,7 +69,7 @@ const quotationSchema = new mongoose.Schema(
     },
 
     package: {
-     type: String
+      type: String,
     },
 
     functionDate: {
@@ -86,6 +86,11 @@ const quotationSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+
+    // Tax Fields
+    cgst: { type: Number, default: 0 },
+    sgst: { type: Number, default: 0 },
+    igst: { type: Number, default: 0 },
 
     discount: {
       type: Number,
