@@ -14,6 +14,7 @@ import noteSettingsRoutes from "./noteSettings.js";
 import outdoorBookMasterRoutes from "./outdoorBookMaster.js";
 import customerRoutes from "./customer.js";
 import termsConditionsRoutes from "./terms&conditions.js";
+import productSellRoutes from "./productSell.js";
 
 router.use("/admin", authRoute);
 router.use("/staff", staffRoutes);
@@ -28,5 +29,6 @@ router.use("/noteSettings", noteSettingsRoutes);
 router.use("/outdoorBookMaster", outdoorBookMasterRoutes);
 router.use("/outdoorParty", customerRoutes);
 router.use("/termsAndConditions", termsConditionsRoutes);
+router.use("/productSell", productSellRoutes);
 
 export default router;
