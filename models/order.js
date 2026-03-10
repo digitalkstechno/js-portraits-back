@@ -34,10 +34,6 @@ const orderItemSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-
-    place: { type: String },
-
-    time: { type: String },
   },
   { _id: false },
 );
