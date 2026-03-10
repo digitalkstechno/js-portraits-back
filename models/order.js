@@ -101,6 +101,9 @@ const orderSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+
+    balanceDue: { type: Number, default: 0 },
+    paymentMode: { type: String },
   },
   { timestamps: true },
 );
