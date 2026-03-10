@@ -25,6 +25,9 @@ const PurchaseSchema = new mongoose.Schema(
     discount: { type: Number },
     totalGst: { type: Number, required: true },
     grandTotal: { type: Number, required: true },
+    paymentMode: { type: String },
+    transactionId: { type: String },
+    amountPaid: { type: Number },
 
     // Payment Tracking
     paymentStatus: {
