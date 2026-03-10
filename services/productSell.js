@@ -9,6 +9,5 @@ export const getAllProductSell = async () => {
 };
 
 export const getCountOfProductSell = async () => {
-  const count = await ProductSell.countDocuments();
-  return count;
+  return await ProductSell.countDocuments();
 };
