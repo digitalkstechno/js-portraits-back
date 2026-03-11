@@ -5,7 +5,7 @@ export const createProductSell = async (data) => {
 };
 
 export const getAllProductSell = async () => {
-  return await ProductSell.find().sort({ createdAt: -1 });
+  return await ProductSell.find().sort({ createdAt: -1 }).populate("bookName");
 };
 
 export const getCountOfProductSell = async () => {
