@@ -3,12 +3,12 @@ import mongoose from "mongoose";
 const orderBillItemSchema = new mongoose.Schema(
   {
     date: { type: Date },
-    productId: { type: mongoose.Schema.Types.ObjectId, ref: "ProductDetails" },
+    productName: { type: String },
     itemName: { type: String, required: true },
     eventName: { type: String },
     qty: { type: Number, required: true, min: 1 },
     rate: { type: Number, required: true, min: 0 },
-    total: { type: Number, required: true }, // qty * rate
+    amount: { type: Number, required: true }, // qty * rate
     place: { type: String },
     time: { type: String },
   },
@@ -17,10 +17,11 @@ const orderBillItemSchema = new mongoose.Schema(
 
 const orderBillSchema = new mongoose.Schema(
   {
+    bookName: { type: mongoose.Schema.Types.ObjectId, ref: "OutdoorBook" },
     billNo: { type: String, unique: true },
     date: { type: Date, default: Date.now },
     contactNo: { type: String },
-    quotationNo: { type: String },
+    // quotationNo: { type: String },
     outdoorParty: { type: String },
     couple: { type: String },
     address: { type: String },
@@ -40,7 +41,7 @@ const orderBillSchema = new mongoose.Schema(
 
     grandTotal: { type: Number, default: 0 },
     advance: { type: Number, default: 0 },
-    balance: { type: Number, default: 0 }, // grandTotal - advance
+    balanceDue: { type: Number, default: 0 }, // grandTotal - advance
 
     paymentStatus: {
       type: String,

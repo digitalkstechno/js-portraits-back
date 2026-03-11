@@ -14,7 +14,7 @@ export const createOrderBill = async (data) => {
   // 3. Totals Calculation
   const taxTotal = (data.cgst || 0) + (data.sgst || 0) + (data.igst || 0);
   const grandTotal = subTotal - (data.discount || 0) + taxTotal;
-  const balance = grandTotal - (data.advance || 0);
+  const balanceDue = grandTotal - (data.advance || 0);
 
   // 4. Set Payment Status
   let status = "Pending";
@@ -26,7 +26,7 @@ export const createOrderBill = async (data) => {
     billNo,
     subTotal,
     grandTotal,
-    balance,
+    balanceDue,
     paymentStatus: status,
   });
 
@@ -34,7 +34,7 @@ export const createOrderBill = async (data) => {
 };
 
 export const getAllBills = async (query) => {
-  return await OutdoorOrderBill.find(query).sort({ createdAt: -1 });
+  return await OutdoorOrderBill.find(query).sort({ createdAt: -1 }).populate("bookName");
 };
 
 export const getBillById = async (id) => {

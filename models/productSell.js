@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const PurchaseSchema = new mongoose.Schema(
   {
-    bookName: { type: String }, // Agar string bhej rahe ho frontend se
+    bookName: { type: mongoose.Schema.Types.ObjectId, ref: "OutdoorBook" }, 
     billNo: { type: String },
     partyName: { type: String, required: true },
     contactNo: { type: String },
