@@ -1,10 +1,10 @@
 import PrintSetting from "../models/printSettings.js";
 
-export const fetchProfile = async () => {
+export const fetchPrintSettings = async () => {
   return await PrintSetting.findOne();
 };
 
-export const saveOrUpdateProfile = async (data) => {
+export const saveOrUpdatePrintSettings = async (data) => {
   return await PrintSetting.findOneAndUpdate({}, data, {
     upsert: true,
     returnDocument: "after",
