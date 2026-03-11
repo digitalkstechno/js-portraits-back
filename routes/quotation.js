@@ -15,9 +15,7 @@ const router = express.Router();
 router.get("/count", getQuotationCount);
 router.get(
   "/",
-  paginationMiddleware(Quotation, {
-    populate: { path: "packageId" },
-  }),
+  paginationMiddleware(Quotation),
   getQuotationsHandler,
 );
 router.get("/:quotationNo", getQuotationByQuotationHandler);
