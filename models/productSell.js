@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const PurchaseSchema = new mongoose.Schema(
   {
-    bookName: { type: mongoose.Schema.Types.ObjectId, ref: "OutdoorBook" }, 
+    bookName: { type: mongoose.Schema.Types.ObjectId, ref: "OutdoorBook" },
     billNo: { type: String },
     partyName: { type: String, required: true },
     contactNo: { type: String },
@@ -21,8 +21,13 @@ const PurchaseSchema = new mongoose.Schema(
 
     subTotal: { type: Number, required: true },
     discount: { type: Number, default: 0 },
-    totalGst: { type: Number, required: true },
     grandTotal: { type: Number, required: true },
+    cgstPerc: { type: Number, default: 0 },
+    cgstAmt: { type: Number, default: 0 },
+    sgstPerc: { type: Number, default: 0 },
+    sgstAmt: { type: Number, default: 0 },
+    igstPerc: { type: Number, default: 0 },
+    igstAmt: { type: Number, default: 0 },
 
     // Payment Details
     paymentMode: { type: String, default: "Cash" },

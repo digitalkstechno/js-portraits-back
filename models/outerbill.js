@@ -35,9 +35,12 @@ const orderBillSchema = new mongoose.Schema(
     discount: { type: Number, default: 0 },
 
     // Tax Fields
-    cgst: { type: Number, default: 0 },
-    sgst: { type: Number, default: 0 },
-    igst: { type: Number, default: 0 },
+    cgstPerc: { type: Number, default: 0 },
+    cgstAmt: { type: Number, default: 0 },
+    sgstPerc: { type: Number, default: 0 },
+    sgstAmt: { type: Number, default: 0 },
+    igstPerc: { type: Number, default: 0 },
+    igstAmt: { type: Number, default: 0 },
 
     grandTotal: { type: Number, default: 0 },
     advance: { type: Number, default: 0 },
