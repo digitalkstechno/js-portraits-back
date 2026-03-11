@@ -15,7 +15,6 @@ const router = express.Router();
 router.get("/count", getQuotationCount);
 router.get(
   "/",
-  paginationMiddleware(Quotation),
   getQuotationsHandler,
 );
 router.get("/:quotationNo", getQuotationByQuotationHandler);

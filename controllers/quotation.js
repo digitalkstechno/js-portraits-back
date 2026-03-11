@@ -40,8 +40,8 @@ export const createQuotationHandler = async (req, res) => {
 
 export const getQuotationsHandler = async (req, res) => {
   try {
-    // const quotation = await getAllQuotations();
-    return res.status(200).json(req.paginatedResult);
+    const quotation = await getAllQuotations();
+    return res.status(200).json(quotation);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }

@@ -26,7 +26,7 @@ export const createQuotation = async (data) => {
 };
 
 export const getAllQuotations = async (filters = {}) => {
-  return await Quotation.find(filters).sort({ createdAt: -1 });
+  return await Quotation.find(filters).sort({ createdAt: -1 }).populate("items.productId");
 };
 
 export const getQuotationById = async (id) => {
