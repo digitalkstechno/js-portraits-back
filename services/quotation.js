@@ -55,7 +55,9 @@ export const updateQuotation = async (id, updateData) => {
     updateData.grandTotal = updateData.subTotal - (updateData.discount || 0);
   }
 
-  return await Quotation.findByIdAndUpdate(id, updateData, { new: true });
+  return await Quotation.findByIdAndUpdate(id, updateData, {
+    returnDocument: "after",
+  });
 };
 
 export const deleteQuotation = async (id) => {

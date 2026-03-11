@@ -14,6 +14,6 @@ export const getCustomerByName = async (name) => {
 
 export const updateCustomer = async (id, data) => {
   return await Customer.findByIdAndUpdate(id, data, {
-    new: true,
+    returnDocument: "after",
   });
 };

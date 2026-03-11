@@ -7,6 +7,6 @@ export const getGstData = async () => {
 export const saveOrUpdateGst = async (data) => {
   return await GstConfigure.findOneAndUpdate({}, data, {
     upsert: true,
-    new: true,
+    returnDocument: "after",
   });
 };

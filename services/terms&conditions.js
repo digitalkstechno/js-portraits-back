@@ -11,6 +11,6 @@ export const saveOrUpdateTerms = async (termsArray, user) => {
       conditions: termsArray,
       lastUpdatedBy: user,
     },
-    { upsert: true, new: true },
+    { upsert: true, returnDocument: "after" },
   );
 };

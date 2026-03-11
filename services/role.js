@@ -18,7 +18,7 @@ export const getRoleByName = async (name) => {
 
 export const updateRole = async (id, data) => {
   return await Role.findByIdAndUpdate(id, data, {
-    new: true,
+    returnDocument: "after",
   });
 };
 

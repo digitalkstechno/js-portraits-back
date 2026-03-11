@@ -30,7 +30,7 @@ export const getCountOfProducts = async () => {
 
 export const updateProduct = async (id, data) => {
   return await ProductDetails.findByIdAndUpdate(id, data, {
-    new: true,
+    returnDocument: "after",
   });
 };
 

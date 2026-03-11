@@ -48,6 +48,6 @@ export const getCountOfBills = async () => {
 
 export const updateBillById = async (id) => {
   return await OutdoorOrderBill.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
+    returnDocument: "after",
   });
 };

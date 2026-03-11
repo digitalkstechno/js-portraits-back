@@ -14,7 +14,7 @@ export const getItemById = async (id) => {
 
 export const updateItem = async (id, data) => {
   return await Item.findByIdAndUpdate(id, data, {
-    new: true,
+    returnDocument: "after",
   });
 };
 

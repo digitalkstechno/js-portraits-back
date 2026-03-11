@@ -42,7 +42,7 @@ export const getCountOfStaff = async () => {
 
 export const updateStaff = async (id, data) => {
   return await Staff.findByIdAndUpdate(id, data, {
-    new: true,
+    returnDocument: "after",
   });
 };
 
