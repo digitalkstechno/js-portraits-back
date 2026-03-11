@@ -16,6 +16,7 @@ import customerRoutes from "./customer.js";
 import termsConditionsRoutes from "./terms&conditions.js";
 import productSellRoutes from "./productSell.js";
 import gstConfigurationRoutes from "./gstConfiguration.js";
+import printSettingsRoutes from "./printSettings.js";
 
 router.use("/admin", authRoute);
 router.use("/staff", staffRoutes);
@@ -32,5 +33,6 @@ router.use("/outdoorParty", customerRoutes);
 router.use("/termsAndConditions", termsConditionsRoutes);
 router.use("/productSell", productSellRoutes);
 router.use("/gstConfig", gstConfigurationRoutes);
+router.use("/printSettings", printSettingsRoutes);
 
 export default router;
