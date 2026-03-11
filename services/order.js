@@ -32,6 +32,12 @@ export const createOutdoorOrder = async (data) => {
   return await newOrder.save();
 };
 
+export const getOrders = async () => {
+  return await OutdoorOrder.find().populate(
+    "items.productId",
+  );
+};
+
 export const getOrderByQuotationNo = async (quotationNo) => {
   return await OutdoorOrder.findOne({ quotationNo }).populate(
     "items.productId",

@@ -2,6 +2,7 @@ import {
   createOutdoorOrder,
   getCountOfOrders,
   getOrderByQuotationNo,
+  getOrders,
 } from "../services/order.js";
 
 export const createOutdoorOrderHandler = async (req, res) => {
@@ -38,6 +39,18 @@ export const getOrderByQuotationHandler = async (req, res) => {
       message: "Error fetching order",
       error: error.message,
     });
+  }
+};
+
+export const getAllOrders = async (req, res) => {
+  try {
+    const orders = await getOrders();
+    if (!orders) {
+      return res.status(404).json({ message: "Orders not found" });
+    }
+    res.status(200).json({ success: true, orders });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
