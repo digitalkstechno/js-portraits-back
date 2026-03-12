@@ -16,6 +16,8 @@ const outdoorPaymentSchema = new mongoose.Schema(
     totalPaidAmt: { type: Number },
     totalPendingAmt: { type: Number },
     orderTotalAmt: { type: Number },
+    orderTotalPaidAmt: { type: Number },
+    orderTotalPendingAmt: { type: Number },
     paymentType: { type: String },
     amount: { type: Number },
     remark: { type: String },
