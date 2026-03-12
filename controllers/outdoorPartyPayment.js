@@ -1,6 +1,7 @@
 import {
   deletepayment,
   getByParty,
+  getCountOfPayments,
   getPayments,
   save,
 } from "../services/outdoorPartyPayment.js";
@@ -24,6 +25,15 @@ export const getAllPayment = async (req, res) => {
       return res.json({ message: "Payments not found" });
     }
     res.status(200).json(data);
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const getPaymentCount = async (req, res) => {
+  try {
+    const count = await getCountOfPayments();
+    res.status(200).json({ success: true, count });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }

@@ -12,6 +12,11 @@ export const getByParty = async (id) => {
   return await OutdoorPayment.findById(id);
 };
 
+export const getCountOfPayments = async () => {
+  const count = await OutdoorPayment.countDocuments();
+  return count;
+};
+
 export const deletepayment = async (id) => {
-    return await OutdoorPayment.findByIdAndDelete(id);
+  return await OutdoorPayment.findByIdAndDelete(id);
 };
