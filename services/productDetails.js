@@ -4,6 +4,7 @@ export const createProduct = async (data) => {
   const count = await ProductDetails.countDocuments();
   const sr_no = `${(count + 1).toString()}`;
   const product = new ProductDetails({ ...data, sr_no });
+  await product.save();
   return product;
 };
 
