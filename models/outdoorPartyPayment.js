@@ -4,7 +4,11 @@ const outdoorPaymentSchema = new mongoose.Schema(
   {
     transNo: { type: String },
     date: { type: Date },
-    outdoorParty: { type: String, required: true },
+    outdoorParty: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Customer",
+      required: true,
+    },
     orderNo: { type: String },
     address: { type: String },
     contactNumber: { type: String },
