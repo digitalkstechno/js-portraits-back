@@ -17,6 +17,7 @@ import termsConditionsRoutes from "./terms&conditions.js";
 import productSellRoutes from "./productSell.js";
 import gstConfigurationRoutes from "./gstConfiguration.js";
 import printSettingsRoutes from "./printSettings.js";
+import outdoorPartyPaymentRoutes from "./outdoorPartyPayment.js";
 
 router.use("/admin", authRoute);
 router.use("/staff", staffRoutes);
@@ -34,5 +35,6 @@ router.use("/termsAndConditions", termsConditionsRoutes);
 router.use("/productSell", productSellRoutes);
 router.use("/gstConfig", gstConfigurationRoutes);
 router.use("/printSettings", printSettingsRoutes);
+router.use("/outdoorPayment", outdoorPartyPaymentRoutes);
 
 export default router;
