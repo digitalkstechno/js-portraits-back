@@ -3,16 +3,31 @@ import OutdoorPayment from "../models/outdoorPartyPayment.js";
 export const save = async (data) => {
   const count = await OutdoorPayment.countDocuments();
   const transNo = `${(count + 1).toString()}`;
-  const newQuotation = new OutdoorPayment({
+
+  // 2. Naya Payment object banana
+  const newPayment = new OutdoorPayment({
     ...data,
     transNo,
   });
 
-  return await newQuotation.save();
+  const savedPayment = await newPayment.save();
+  if (savedPayment) {
+    await OutdoorPayment.updateMany(
+      { orderNo: data.orderNo }, 
+      {
+        $inc: {
+          orderTotalPaidAmt: data.amount,
+          orderTotalPendingAmt: -data.amount, 
+        },
+      },
+    );
+  }
+
+  return savedPayment;
 };
 
 export const getPayments = async () => {
-  return await OutdoorPayment.find();
+  return await OutdoorPayment.find().populate("outdoorParty");
 };
 
 export const getByParty = async (id) => {

@@ -20,11 +20,11 @@ export const savePayment = async (req, res) => {
 
 export const getAllPayment = async (req, res) => {
   try {
-    const data = await getPayments();
+    const payments = await getPayments();
     if (!payments) {
       return res.json({ message: "Payments not found" });
     }
-    res.status(200).json(data);
+    res.status(200).json(payments);
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
