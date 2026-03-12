@@ -34,7 +34,7 @@ export const createOrderBill = async (data) => {
 };
 
 export const getAllBills = async (query) => {
-  return await OutdoorOrderBill.find(query).sort({ createdAt: -1 }).populate("bookName");
+  return await OutdoorOrderBill.find(query).sort({ createdAt: -1 }).populate("bookName outdoorParty");
 };
 
 export const getBillById = async (id) => {

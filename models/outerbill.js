@@ -22,7 +22,7 @@ const orderBillSchema = new mongoose.Schema(
     date: { type: Date, default: Date.now },
     contactNo: { type: String },
     // quotationNo: { type: String },
-    outdoorParty: { type: String },
+    outdoorParty: { type: mongoose.Schema.Types.ObjectId, ref: "Customer" },
     couple: { type: String },
     address: { type: String },
     remarks: { type: String },
