@@ -1,7 +1,14 @@
 import OutdoorPayment from "../models/outdoorPartyPayment.js";
 
 export const save = async (data) => {
-  return await OutdoorPayment.create(data);
+  const count = await OutdoorPayment.countDocuments();
+  const transNo = `${(count + 1).toString()}`;
+  const newQuotation = new OutdoorPayment({
+    ...data,
+    transNo,
+  });
+
+  return await newQuotation.save();
 };
 
 export const getPayments = async () => {
