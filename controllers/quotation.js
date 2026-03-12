@@ -11,7 +11,7 @@ import {
 
 export const createQuotationHandler = async (req, res) => {
   try {
-    const { outdoorParty, contactNo } = req.body;
+    const { outdoorParty, contactNo, address } = req.body;
     const quotation = await createQuotation(req.body);
     if (!quotation) {
       return res.status(404).json({ message: "Failed to create quotation" });
@@ -19,7 +19,11 @@ export const createQuotationHandler = async (req, res) => {
 
     const exist = await getCustomerByName(outdoorParty);
     if (!exist) {
-      await createCustomer({ name: outdoorParty, contact: contactNo });
+      await createCustomer({
+        name: outdoorParty,
+        contact: contactNo,
+        address: address,
+      });
     }
 
     return res.status(201).json({

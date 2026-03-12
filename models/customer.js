@@ -9,6 +9,7 @@ const customerSchema = new mongoose.Schema(
     contact: {
       type: String,
     },
+    address: { type: String },
   },
   { timestamps: true },
 );
