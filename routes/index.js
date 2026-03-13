@@ -18,6 +18,7 @@ import productSellRoutes from "./productSell.js";
 import gstConfigurationRoutes from "./gstConfiguration.js";
 import printSettingsRoutes from "./printSettings.js";
 import outdoorPartyPaymentRoutes from "./outdoorPartyPayment.js";
+import productPurchaseRoutes from "./productPurchase.js";
 
 router.use("/admin", authRoute);
 router.use("/staff", staffRoutes);
@@ -36,5 +37,6 @@ router.use("/productSell", productSellRoutes);
 router.use("/gstConfig", gstConfigurationRoutes);
 router.use("/printSettings", printSettingsRoutes);
 router.use("/outdoorPayment", outdoorPartyPaymentRoutes);
+router.use("/productPurchase", productPurchaseRoutes);
 
 export default router;
