@@ -83,6 +83,7 @@ const orderSchema = new mongoose.Schema(
 
     items: [orderItemSchema],
 
+    // Billing Section
     subTotal: {
       type: Number,
       default: 0,
@@ -92,6 +93,16 @@ const orderSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+
+    // GST Fields
+    cgstPerc: { type: Number, default: 0 },
+    cgstAmt: { type: Number, default: 0 },
+
+    sgstPerc: { type: Number, default: 0 },
+    sgstAmt: { type: Number, default: 0 },
+
+    igstPerc: { type: Number, default: 0 },
+    igstAmt: { type: Number, default: 0 },
 
     advance: {
       type: Number,
@@ -103,8 +114,14 @@ const orderSchema = new mongoose.Schema(
       default: 0,
     },
 
-    balanceDue: { type: Number, default: 0 },
-    paymentMode: { type: String },
+    balanceDue: {
+      type: Number,
+      default: 0,
+    },
+
+    paymentMode: {
+      type: String,
+    },
   },
   { timestamps: true },
 );
