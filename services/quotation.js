@@ -1,24 +1,48 @@
 import Quotation from "../models/quotation.js";
 
 export const createQuotation = async (data) => {
-  // 1. Auto-generate Quotation Number (Example: QT-2026-001)
+  // 1. Auto-generate Quotation Number
   const count = await Quotation.countDocuments();
   const quotationNo = `${(count + 1).toString()}`;
 
-  // 2. Calculate Totals (Double check from backend side for security)
+  // 2. Calculate Item Totals
   const items = data.items.map((item) => ({
     ...item,
     total: item.qty * item.rate,
   }));
 
+  // 3. SubTotal
   const subTotal = items.reduce((acc, item) => acc + item.total, 0);
-  const grandTotal = subTotal - (data.discount || 0);
+
+  // 4. GST Calculation
+  const cgstPerc = data.cgstPerc || 0;
+  const sgstPerc = data.sgstPerc || 0;
+  const igstPerc = data.igstPerc || 0;
+
+  const cgstAmt = (subTotal * cgstPerc) / 100;
+  const sgstAmt = (subTotal * sgstPerc) / 100;
+  const igstAmt = (subTotal * igstPerc) / 100;
+
+  const totalTax = cgstAmt + sgstAmt + igstAmt;
+
+  // 5. Discount
+  const discount = data.discount || 0;
+
+  // 6. Grand Total
+  const grandTotal = subTotal + totalTax - discount;
 
   const newQuotation = new Quotation({
     ...data,
     quotationNo,
     items,
     subTotal,
+    cgstPerc,
+    cgstAmt,
+    sgstPerc,
+    sgstAmt,
+    igstPerc,
+    igstAmt,
+    discount,
     grandTotal,
   });
 
