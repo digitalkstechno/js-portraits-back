@@ -26,17 +26,20 @@ export const createQuotation = async (data) => {
 };
 
 export const getAllQuotations = async (filters = {}) => {
-  return await Quotation.find(filters).sort({ createdAt: -1 }).populate("items.productId");
+  return await Quotation.find(filters)
+    .sort({ createdAt: -1 })
+    .populate("items.productId")
+    .populate("outdoorParty");
 };
 
 export const getQuotationById = async (id) => {
-  return await Quotation.findById(id);
+  return await Quottation.findById(id);
 };
 
 export const getQuotationByQuotationNo = async (quotationNo) => {
   return await Quotation.findOne({ quotationNo: quotationNo }).populate(
     "items.productId",
-  );
+  ).populate("outdoorParty");
 };
 
 export const getCountOfQuotation = async () => {

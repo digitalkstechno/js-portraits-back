@@ -57,7 +57,8 @@ const orderSchema = new mongoose.Schema(
     },
 
     outdoorParty: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Customer",
     },
 
     couple: {

@@ -34,13 +34,13 @@ export const createOutdoorOrder = async (data) => {
 
 export const getOrders = async () => {
   return await OutdoorOrder.find().populate(
-    "items.productId",
+    "items.productId outdoorParty",
   );
 };
 
 export const getOrderByQuotationNo = async (quotationNo) => {
   return await OutdoorOrder.findOne({ quotationNo }).populate(
-    "items.productId",
+    "items.productId outdoorParty",
   );
 };
 

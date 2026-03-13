@@ -48,7 +48,8 @@ const quotationSchema = new mongoose.Schema(
     },
 
     outdoorParty: {
-      type: String, // manually entered but saved for dropdown
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Customer",
       required: true,
     },
 
