@@ -12,18 +12,32 @@ import {
 export const createQuotationHandler = async (req, res) => {
   try {
     const { outdoorParty, contactNo, address } = req.body;
-    const quotation = await createQuotation(req.body);
-    if (!quotation) {
-      return res.status(404).json({ message: "Failed to create quotation" });
-    }
 
+    // 1. Check if customer exists
     const exist = await getCustomerByName(outdoorParty);
+
+    let partyId; // Variable to store the final ObjectId
+
     if (!exist) {
-      await createCustomer({
+      // 2. Agar nahi milta toh naya create karein
+      const customer = await createCustomer({
         name: outdoorParty,
         contact: contactNo,
         address: address,
       });
+      partyId = customer._id;
+    } else {
+      // 3. AGAR MIL JATA HAI toh uski ID use karein (Yeh part missing tha)
+      partyId = exist._id;
+    }
+
+    // 4. Body mein ID assign karein (Empty string nahi jayegi ab)
+    req.body.outdoorParty = partyId;
+
+    const quotation = await createQuotation(req.body);
+
+    if (!quotation) {
+      return res.status(404).json({ message: "Failed to create quotation" });
     }
 
     return res.status(201).json({
@@ -33,7 +47,6 @@ export const createQuotationHandler = async (req, res) => {
     });
   } catch (error) {
     console.error("Quotation Create Error:", error);
-
     return res.status(500).json({
       success: false,
       message: "Error creating quotation",

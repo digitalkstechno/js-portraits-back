@@ -50,7 +50,7 @@ const quotationSchema = new mongoose.Schema(
     outdoorParty: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Customer",
-      required: true,
+      default: null
     },
 
     address: {
