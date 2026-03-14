@@ -41,5 +41,7 @@ const staffSalarySchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-const StaffSalary = mongoose.model("StaffSalary", staffSalarySchema);
+const StaffSalary =
+  mongoose.models.StaffSalary ||
+  mongoose.model("StaffSalary", staffSalarySchema);
 export default StaffSalary;
