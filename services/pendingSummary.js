@@ -22,7 +22,7 @@ export const getDetailedSummary = async (startDate, endDate) => {
     dateFilter.date = { $gte: start, $lte: end };
   }
 
-  console.log("Running Query with Filter:", JSON.stringify(dateFilter));
+//   console.log("Running Query with Filter:", JSON.stringify(dateFilter));
 
   const getDues = async (Model, amountField, balanceField) => {
     const result = await Model.aggregate([
