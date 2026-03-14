@@ -1,7 +1,7 @@
 import OutdoorOrder from "../models/order.js";
 import OutdoorOrderBill from "../models/outerbill.js";
 import ProductSell from "../models/productSell.js";
-import StaffSalary from "../models/StaffSalary.js";
+import StaffSalary from "../models/staffSalary.js";
 
 export const getDetailedSummary = async (startDate, endDate) => {
   let dateFilter = {};
