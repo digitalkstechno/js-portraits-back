@@ -2,7 +2,7 @@ import OutdoorOrder from "../models/order.js";
 import OutdoorOrderBill from "../models/outerbill.js";
 import ProductPurchase from "../models/productPurchase.js";
 import ProductSell from "../models/productSell.js";
-import StaffSalary from "../models/StaffSalary.js";
+import StaffSalary from "../models/staffSalary.js";
 
 export const getSummary = async (startDate, endDate) => {
   // 1. Improved Date Filter Logic (Handles time range to cover full day)
