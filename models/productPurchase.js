@@ -11,6 +11,7 @@ const PurchaseItemSchema = new mongoose.Schema({
 
 const PurchaseSchema = new mongoose.Schema(
   {
+    date: { type: Date },
     vendorName: { type: String, required: true },
     invoiceNo: { type: String },
     purchaseDate: { type: Date, default: Date.now },

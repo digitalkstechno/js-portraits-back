@@ -19,7 +19,7 @@ const orderBillSchema = new mongoose.Schema(
   {
     bookName: { type: mongoose.Schema.Types.ObjectId, ref: "OutdoorBook" },
     billNo: { type: String, unique: true },
-    date: { type: Date, default: Date.now },
+    date: { type: Date },
     contactNo: { type: String },
     // quotationNo: { type: String },
     outdoorParty: { type: mongoose.Schema.Types.ObjectId, ref: "Customer" },

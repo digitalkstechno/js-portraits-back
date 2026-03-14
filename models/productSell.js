@@ -6,7 +6,7 @@ const PurchaseSchema = new mongoose.Schema(
     billNo: { type: String },
     partyName: { type: String, required: true },
     contactNo: { type: String },
-    sellDate: { type: Date, default: Date.now },
+    date: { type: Date, default: Date.now },
 
     items: [
       {

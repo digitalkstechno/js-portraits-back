@@ -7,12 +7,21 @@ import StaffSalary from "../models/StaffSalary.js";
 export const getSummary = async (startDate, endDate) => {
   // 1. Improved Date Filter Logic (Handles time range to cover full day)
   let dateFilter = {};
-  if (startDate) {
-    dateFilter.date = { $gte: new Date(startDate) };
+
+  if (startDate && endDate) {
+    // String format ko maintain rakhte hue date range banana
+    const start = new Date(startDate);
+    start.setUTCHours(0, 0, 0, 0);
+
+    const end = new Date(endDate);
+    end.setUTCHours(23, 59, 59, 999);
+
+    dateFilter.date = {
+      $gte: start,
+      $lte: end,
+    };
   }
-  if (endDate) {
-    dateFilter.date = { ...dateFilter.date, $lte: new Date(endDate) };
-  }
+//   console.log("Final Mongo Filter:", JSON.stringify(dateFilter));
 
   // 2. Optimized Helper function for Aggregation
   const getAggregateSum = async (Model, fieldName, filter) => {
